@@ -1,0 +1,61 @@
+
+%%%% Box Definition %%%%
+%\newtcolorbox{prob}[1]{
+	%	% Set box style
+	%	sidebyside align=top,
+	%	% Dimensions and layout
+	%	width=\textwidth,
+	%	toptitle=2.5pt,
+	%	bottomtitle=2.5pt,
+	%	% Coloring
+	%	colbacktitle=gray!30,
+	%	coltitle=black,
+	%	colback=white,
+	%	colframe=black,
+	%	% Title formatting
+	%	title={ #1 },
+	%	fonttitle=\large\bfseries
+	%}
+
+\usepackage[most, breakable, many]{tcolorbox} % nice looking boxes for example/question 
+\newtcbtheorem{example}{Example}
+{%
+	colback = myexamplebg
+	,breakable
+	,colframe = myexamplefr
+	,coltitle = myexampleti
+	,boxrule = 1pt
+	,sharp corners
+	,detach title
+	,before upper=\tcbtitle\par\smallskip
+	,fonttitle = {\bfseries\fontfamily{lmss}\selectfont}
+	,description font = \mdseries
+	,separator sign none
+}
+{ex}
+\makeatletter
+\newtcbtheorem{question}{Question}
+{
+	enhanced,
+	breakable,
+	colback=blue!7,
+	colframe=blue!90,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle={\bfseries\fontfamily{lmss}\selectfont\hphantom{i}},
+	boxed title size=title,
+	boxed title style={%
+		sharp corners,
+		rounded corners=northwest,
+		colback=tcbcolframe,
+		boxrule=3pt,
+	},
+	underlay boxed title={%
+		\path[fill=tcbcolframe] (title.south west)--(title.south east)
+		to[out=0, in=180] ([xshift=5mm]title.east)--
+		(title.center-|frame.east)
+		[rounded corners=\kvtcb@arc] |-
+		(frame.north) -| cycle;
+	}
+}{def}
+\makeatother
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{\ensuremath{#2}}}   % Scales a mathmode object by a number

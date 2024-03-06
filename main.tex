@@ -15,22 +15,21 @@ outer=0.5in
 
 %%%% Additional Commands to Load %%%%
 \usepackage{hyperref}               % link 
-\usepackage[most, breakable, many]{tcolorbox} % nice looking boxes for example/question 
 \usepackage{color}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage{tabularx,colortbl}
-\usepackage{titling}               % header 
+\usepackage{titling}               			% header 
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage{mathrsfs}
 \usepackage{calc}
 \usepackage{wrapfig}
-\usepackage{derivative}   % easy partial derivatives
+\usepackage{derivative}   					% easy partial derivatives
 \usepackage{lmodern} 
-\usepackage{tasks}      % for questions (nice numbering)
-\usepackage{rotating}   % for rotating large blocks of text+images
+\usepackage{tasks}      					% for questions (nice numbering)
+\usepackage{rotating}   					% for rotating large blocks of text+images
 \usepackage[relative]{textpos}
-\usepackage{graphicx}   % images duh
+\usepackage{graphicx}   					% images duh
 \graphicspath{ {./images/} }
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -40,64 +39,7 @@ outer=0.5in
 \definecolor{myexampleti}{HTML}{2A7F7F}
 
 %%%% Commands  %%%%
-%%%% Box Definition %%%%
-%\newtcolorbox{prob}[1]{
-%	% Set box style
-%	sidebyside align=top,
-%	% Dimensions and layout
-%	width=\textwidth,
-%	toptitle=2.5pt,
-%	bottomtitle=2.5pt,
-%	% Coloring
-%	colbacktitle=gray!30,
-%	coltitle=black,
-%	colback=white,
-%	colframe=black,
-%	% Title formatting
-%	title={ #1 },
-%	fonttitle=\large\bfseries
-%}
-\newtcbtheorem{example}{Example}
-{%
-	colback = myexamplebg
-	,breakable
-	,colframe = myexamplefr
-	,coltitle = myexampleti
-	,boxrule = 1pt
-	,sharp corners
-	,detach title
-	,before upper=\tcbtitle\par\smallskip
-	,fonttitle = {\bfseries\fontfamily{lmss}\selectfont}
-	,description font = \mdseries
-	,separator sign none
-}
-{ex}
-\makeatletter
-\newtcbtheorem{question}{Question}
-{
-	enhanced,
-	breakable,
-	colback=blue!7,
-	colframe=blue!90,
-	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-	fonttitle={\bfseries\fontfamily{lmss}\selectfont\hphantom{i}},
-	boxed title size=title,
-	boxed title style={%
-		sharp corners,
-		rounded corners=northwest,
-		colback=tcbcolframe,
-		boxrule=3pt,
-	},
-	underlay boxed title={%
-		\path[fill=tcbcolframe] (title.south west)--(title.south east)
-		to[out=0, in=180] ([xshift=5mm]title.east)--
-		(title.center-|frame.east)
-		[rounded corners=\kvtcb@arc] |-
-		(frame.north) -| cycle;
-	}
-}{def}
-\makeatother
-\newcommand*{\Scale}[2][4]{\scalebox{#1}{\ensuremath{#2}}}   % Scales a mathmode object by a number
+\include{boxes.tex}
 
 %%%% Environment Definition %%%%
 
@@ -204,6 +146,8 @@ outer=0.5in
 			 \odv[order={n}, delims-eval=.|]{f}{x}_{x=a} = \odv[order={n}, delims-eval=.|]{g}{x}_{x=a} \hspace{2em}  \rightarrow \hspace{2em}  f = g  
 		\end{equation*}
 	\end{tcolorbox}
+
+	Let us see how we can use this information. Suppose we have some function $f$ that is infinitely differentiable (i.e the $n$-th derivative exists). 
 	
 	
 	\subsubsection{Real valued function} 
